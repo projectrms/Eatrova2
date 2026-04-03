@@ -1,0 +1,81 @@
+/* -------------------------- */
+/*   CUSTOMER PURCHASE CHART  */
+/* -------------------------- */
+
+.chart-section {
+  width: 100%;
+  background: #ffffff;
+  padding: 22px 28px;
+  border-radius: 18px;
+  margin: 25px 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  border: 1px solid #ececec;
+  transition: 0.3s ease;
+}
+
+.chart-section:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Title */
+.chart-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 18px;
+  letter-spacing: 0.3px;
+}
+
+/* Wrapper Box */
+.chart-wrapper {
+  width: 100%;
+  height: 320px;
+  padding: 20px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #f8fafc, #eef1f5);
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Empty State */
+.chart-section.empty {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 40px 20px;
+  text-align: center;
+  border: 1px dashed #cbd5e0;
+}
+
+.empty-text {
+  font-size: 16px;
+  color: #718096;
+  padding-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .chart-section {
+    padding: 18px;
+  }
+
+  .chart-wrapper {
+    height: 260px;
+    padding: 10px;
+  }
+
+  .chart-title {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chart-wrapper {
+    height: 220px;
+  }
+
+  .chart-title {
+    font-size: 17px;
+  }
+}

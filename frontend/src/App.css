@@ -1,0 +1,146 @@
+/* ===================== GLOBAL ===================== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #fffef8;
+  color: #333;
+  overflow-x: hidden;
+}
+
+/* ===================== NAVBAR ===================== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 3px 12px rgba(255, 210, 50, 0.2);
+  animation: fadeDown 0.6s ease forwards;
+  transition: all 0.3s ease;
+}
+
+.navbar:hover {
+  box-shadow: 0 4px 16px rgba(255, 200, 0, 0.3);
+}
+
+/* ---------- Navbar Inner Layout ---------- */
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 18px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ---------- Brand (Left Side) ---------- */
+.nav-brand {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #ffb300;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.5px;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+  animation: brandGlow 2.5s infinite alternate;
+}
+
+.nav-brand span {
+  margin-left: 6px;
+  font-size: 1.8rem;
+  animation: rotateIcon 3s infinite linear;
+}
+
+.nav-brand:hover {
+  transform: scale(1.08);
+  text-shadow: 0 0 12px rgba(255, 200, 0, 0.6);
+}
+
+/* ---------- Navigation Links (Right Side) ---------- */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.nav-link {
+  position: relative;
+  font-weight: 500;
+  color: #333;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: #ffb300;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #ffb300;
+  transform: translateY(-2px);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ===================== ANIMATIONS ===================== */
+@keyframes fadeDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes brandGlow {
+  0% {
+    text-shadow: 0 0 5px #ffe066, 0 0 10px #ffb300;
+  }
+  100% {
+    text-shadow: 0 0 15px #ffd633, 0 0 25px #ffb300;
+  }
+}
+
+@keyframes rotateIcon {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    padding: 16px 25px;
+  }
+
+  .nav-links {
+    margin-top: 10px;
+    gap: 24px;
+  }
+
+  .nav-brand {
+    font-size: 1.5rem;
+  }
+
+  .nav-link {
+    font-size: 0.95rem;
+  }
+}

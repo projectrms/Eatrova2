@@ -1,0 +1,340 @@
+/* ==============================
+   BILL PAGE PROFESSIONAL DARK
+   ============================== */
+
+.bill-page {
+  padding: 30px 50px;
+  min-height: 100vh;
+  background: #0f172a;
+  font-family: "Inter", sans-serif;
+  color: #f1f5f9;
+}
+
+/* HEADER */
+.bill-page .section-title {
+  font-size: 24px;          /* Large and readable */
+  font-weight: 700;         /* Bold for emphasis */
+  margin: 25px 0 15px 0;    /* Top and bottom spacing */
+  color: #fbbf24;           /* Gold/yellow color to stand out */
+  text-align: left;         /* Align left, can change to center if needed */
+}
+
+/* Small emoji spacing adjustment (optional) */
+.bill-page .section-title::before {
+  margin-right: 6px;
+}
+
+/* CURRENT BILL CARD */
+.bill-card {
+  background: #1e293b;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 30px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.bill-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+}
+.bill-card h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fbbf24;
+}
+.bill-card .status {
+  display: inline-block;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #ff5a00;
+  color: #1e293b;
+  margin-top: 6px;
+}
+
+/* BILL ROWS */
+.bill-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  color: #f1f5f9;
+  margin: 6px 0;
+}
+.bill-row.total {
+  font-weight: 700;
+  font-size: 18px;
+  color: #f59e0b;
+}
+.bill-total {
+  font-size: 20px;
+  font-weight: 700;
+  color: #f59e0b;
+  text-align: right;
+  margin-top: 10px;
+}
+/* ==============================
+   BILL STATUS BADGE
+   ============================== */
+.bill-page .status {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 14px;
+  text-align: right;
+  width: 80px;
+  padding: 4px 12px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, #f43f5e, #f87171); /* red-pink gradient */
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+.bill-page hr{
+  border: none;
+  border-top: 1px dashed #475569;
+  margin: 12px 0;
+  opacity: 0.8;
+}
+
+/* Hover effect for small interaction */
+.bill-page .status:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+}
+/* PAYMENT SELECT & BUTTON */
+.payment-select {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 12px;
+  border-radius: 10px;
+  border: 1px solid #334155;
+  background: #1e293b;
+  color: #f1f5f9;
+  font-size: 16px;
+}
+.payment-select:focus {
+  outline: none;
+  border-color: #fbbf24;
+}
+
+.pay-btn {
+  margin-top: 14px;
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+  color: #1e293b;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.pay-btn:hover {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+}
+.pay-btn:disabled {
+  background: #475569;
+  cursor: not-allowed;
+  color: #cbd5f5;
+}
+
+/* HISTORY CARDS */
+.history-card {
+  background: #1e293b;
+  border-radius: 16px;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.history-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+.history-card button {
+  background: #334155;
+  border: none;
+  border-radius: 10px;
+  padding: 6px 12px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #f1f5f9;
+  transition: all 0.2s;
+}
+.history-card button:hover {
+  background: #475569;
+}
+
+/* INVOICE MODAL */
+.invoice-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+  z-index: 999;
+}
+
+.invoice-box {
+  background: #1e293b;
+  border-radius: 16px;
+  padding: 28px;
+
+  width: 400px;
+  max-width: 92%;
+  margin-top: 80px;
+  color: #f1f5f9;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+
+  box-shadow: 0 12px 28px rgba(0,0,0,0.4);
+
+  animation: modalPop 0.25s ease;
+}
+
+.invoice-box h3.center,
+.invoice-box p.center {
+  text-align: center;
+}
+.invoice-box .small {
+  font-size: 13px;
+  color: #cbd5f5;
+}
+.invoice-box .bill-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  margin: 4px 0;
+}
+.invoice-box .bill-row.total {
+  font-weight: 700;
+  font-size: 18px;
+  color: #f59e0b;
+}
+
+.invoice-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+.invoice-actions button {
+  flex: 1;
+  margin: 0 4px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  background: #f59e0b;
+  color: #1e293b;
+  transition: all 0.2s;
+}
+.invoice-actions button.secondary {
+  background: #334155;
+  color: #f1f5f9;
+}
+.invoice-actions button:hover {
+  opacity: 0.9;
+}
+
+/* EMPTY STATE */
+.empty {
+  color: #cbd5f5;
+  text-align: center;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+@keyframes modalPop {
+  from{
+    transform: scale(0.9);
+    opacity:0;
+  }
+  to{
+    transform: scale(1);
+    opacity:1;
+  }
+}
+/* RESPONSIVE */
+@media screen and (max-width: 900px) {
+  .bill-card,
+  .history-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .pay-btn,
+  .payment-select {
+    width: 100%;
+  }
+  .invoice-box{
+    width:100%;
+    max-height:90vh;
+    padding:20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .bill-card h2,
+  .section-title {
+    font-size: 20px;
+  }
+  .bill-row,
+  .history-card button {
+    font-size: 14px;
+  }
+  .pay-btn {
+    padding: 10px;
+    font-size: 14px;
+  }
+  .invoice-box {
+    padding: 16px;
+  }
+}
+
+/* ==============================
+   PRINT ONLY INVOICE
+   ============================== */
+
+@media print {
+
+  body * {
+    visibility: hidden;
+  }
+
+  .invoice-box,
+  .invoice-box * {
+    visibility: visible;
+  }
+
+  .invoice-box {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: white;
+    color: black;
+    box-shadow: none;
+  }
+
+  .invoice-actions{
+    display:none; /* hide buttons when printing */
+  }
+
+}

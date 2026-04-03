@@ -1,0 +1,35 @@
+/* ================================
+   GLOBAL THEME – EATROVA
+   ================================ */
+
+:root {
+  --primary: #ffbb33;
+  --primary-dark: #ff9800;
+  --accent: #3f51b5;
+
+  --bg-main: #fffbea;
+  --bg-card: #ffffff;
+  --bg-soft: #f9fafb;
+
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+
+  --radius-lg: 18px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+
+  --shadow-sm: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-md: 0 10px 25px rgba(0,0,0,0.10);
+  --shadow-lg: 0 14px 30px rgba(0,0,0,0.14);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-main);
+  color: var(--text-main);
+}

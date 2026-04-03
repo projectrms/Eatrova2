@@ -1,0 +1,319 @@
+/* ================= MAIN DASHBOARD ================= */
+
+.waiter-dashboard{
+
+  position:relative;
+
+  min-height:100vh;
+
+  padding:30px;
+
+  font-family:"Inter",system-ui,sans-serif;
+
+  color:#e2e8f0;
+
+  background-image:url("https://images.unsplash.com/photo-1555396273-367ea4eb4db5");
+
+  background-size:cover;
+
+  background-position:center;
+
+  background-repeat:no-repeat;
+
+  background-attachment:fixed;
+}
+
+
+/* DARK OVERLAY */
+
+.waiter-dashboard::before{
+
+  content:"";
+
+  position:absolute;
+
+  top:0;
+  left:0;
+
+  width:100%;
+  height:100%;
+
+  background:linear-gradient(
+      rgba(2,6,23,0.92),
+      rgba(2,6,23,0.95)
+  );
+
+  z-index:0;
+}
+
+
+/* make all content above overlay */
+
+.waiter-dashboard > *{
+  position:relative;
+  z-index:1;
+}
+
+/* dark overlay */
+
+.waiter-dashboard::after{
+
+  content:"";
+
+  position:fixed;
+
+  top:0;
+  left:0;
+
+  width:100%;
+  height:100%;
+
+  background:linear-gradient(
+      rgba(2,6,23,0.92),
+      rgba(2,6,23,0.95)
+  );
+
+  z-index:-1;
+}
+
+/* ================= HEADER ================= */
+
+.waiter-header h1{
+  font-size:26px;
+  font-weight:600;
+  margin-bottom:4px;
+}
+
+.muted{
+  font-size:13px;
+  color:#94a3b8;
+}
+
+
+/* ================= SEARCH ================= */
+
+.waiter-search-box{
+  margin:25px 0;
+}
+
+.waiter-search-input{
+  width:100%;
+  padding:12px 14px;
+
+  border-radius:10px;
+
+  border:1px solid rgba(255,255,255,0.08);
+
+  background:#1f3842fc;
+
+  color:#ffffff;
+
+  transition:all .2s ease;
+}
+
+.waiter-search-input:focus{
+  outline:none;
+  border-color:#38bdf8;
+  box-shadow:0 0 0 2px rgba(56,189,248,0.25);
+}
+
+
+/* ================= TABLE WRAPPER ================= */
+
+.orders-table-wrapper{
+
+  background:rgba(10,10,10,0.8);
+
+  border-radius:14px;
+
+  border:1px solid rgba(255,255,255,0.05);
+
+  box-shadow:0 20px 40px rgba(0,0,0,0.7);
+
+  overflow-x:auto;
+
+  backdrop-filter:blur(10px);
+}
+
+
+/* ================= TABLE ================= */
+
+.orders-table{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
+}
+
+
+/* ================= HEADER ================= */
+
+.orders-table thead{
+  background:#020617;
+}
+
+.orders-table th{
+
+  padding:16px;
+
+  font-size:13px;
+
+  font-weight:600;
+
+  text-transform:uppercase;
+
+  letter-spacing:.5px;
+
+  color:#94a3b8;
+
+  text-align:left;
+
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.waiter-dashboard .section-title{
+  color:#dae1e4;
+}
+/* ================= ROWS ================= */
+
+.orders-table tbody tr{
+
+  background:#0f172a;
+
+  transition:all .2s ease;
+}
+
+.orders-table tbody tr:nth-child(even){
+  background:#111827;
+}
+
+.orders-table tbody tr:hover{
+  background:#1e293b;
+}
+
+
+/* ================= CELLS ================= */
+
+.orders-table td{
+
+  padding:15px;
+
+  font-size:14px;
+
+  color:#e2e8f0;
+
+  border-bottom:1px solid rgba(255,255,255,0.04);
+}
+
+
+/* ================= STATUS ================= */
+
+.status-pill{
+
+  padding:6px 12px;
+
+  border-radius:20px;
+
+  font-size:12px;
+
+  font-weight:600;
+
+  text-transform:capitalize;
+}
+
+.status-pill.ready{
+  background:#78350f;
+  color:#fdba74;
+}
+
+.status-pill.completed{
+  background:#064e3b;
+  color:#6ee7b7;
+}
+
+.status-pill.cancelled{
+  background:#7f1d1d;
+  color:#fca5a5;
+}
+
+
+/* ================= ACTION BUTTONS ================= */
+
+.action-buttons{
+  display:flex;
+  gap:8px;
+}
+
+.primary-btn{
+
+  background:#2563eb;
+
+  color:white;
+
+  border:none;
+
+  padding:7px 14px;
+
+  border-radius:7px;
+
+  cursor:pointer;
+
+  font-size:13px;
+
+  transition:all .2s ease;
+}
+
+.primary-btn:hover{
+  background:#1d4ed8;
+}
+
+
+.served-label{
+  color:#22c55e;
+  font-weight:600;
+}
+
+.cancelled-label{
+  font-size:13px;
+  color:#ef4444;
+}
+
+
+/* ================= SCROLL BUTTON ================= */
+
+.scroll-top-btn{
+
+  position:fixed;
+
+  bottom:30px;
+  right:30px;
+
+  width:45px;
+  height:45px;
+
+  background:#2563eb;
+
+  color:#fff;
+
+  border:none;
+
+  border-radius:50%;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:18px;
+
+  cursor:pointer;
+
+  box-shadow:0 8px 22px rgba(0,0,0,0.6);
+
+  transition:all .2s ease;
+
+  z-index:1000;
+}
+
+.scroll-top-btn:hover{
+  background:#1d4ed8;
+  transform:translateY(-2px);
+}

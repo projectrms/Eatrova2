@@ -1,0 +1,71 @@
+/* ===========================
+   CHEF NAVBAR
+=========================== */
+
+.chef-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+
+  height: 65px;
+  padding: 0 26px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: rgba(20, 20, 40, 0.55);   /* slightly darker for chef */
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+
+  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+}
+
+/* LEFT SIDE */
+.chef-left h2 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.chef-subtitle {
+  margin: 0;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+}
+
+/* RIGHT SIDE */
+.chef-right {
+  display: flex;
+  align-items: center;
+}
+
+.chef-name {
+  margin-right: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #fff;
+  padding: 6px 12px;
+
+  
+}
+
+/* Logout button */
+.chef-logout-btn {
+  border: none;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: linear-gradient(135deg,#ff8845,#ff3d00);
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+  transition: .2s;
+}
+
+.chef-logout-btn:hover {
+  transform: translateY(-1px) scale(1.05);
+  box-shadow: 0 6px 14px rgba(255,60,0,0.6);
+}
