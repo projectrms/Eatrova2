@@ -6,3 +6,4 @@ stripe
 flask-socketio
 eventlet
 openpyxl
+reportlab
