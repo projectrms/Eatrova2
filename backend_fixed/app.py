@@ -34,18 +34,14 @@ app = Flask(__name__)
 
 @app.after_request
 def after_request(response):
-    response.headers.add("Access-Control-Allow-Origin", "*")
-    response.headers.add("Access-Control-Allow-Headers", "Content-Type,Authorization")
-    response.headers.add("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS")
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    response.headers["Access-Control-Allow-Headers"] = "Content-Type,Authorization"
+    response.headers["Access-Control-Allow-Methods"] = "GET,POST,PUT,DELETE,OPTIONS"
     return response
 
 from flask_cors import CORS
 
-CORS(
-    app,
-    resources={r"/*": {"origins": "*"}},
-    supports_credentials=True
-)
+CORS(app)
 
 # Use eventlet for websocket support (ensure eventlet is installed)
 socketio = SocketIO(app, cors_allowed_origins="*")
@@ -3870,7 +3866,7 @@ def analytics_purchase_history():
 # ---------------------------
 if __name__ == "__main__":
     socketio.run(app, host="0.0.0.0", port=5000)
-    
+
 # if __name__ == "__main__":
 #     # ensure DB exists and seeded
 #     os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
