@@ -54,14 +54,6 @@ TAX_CONFIG = {
     "service": 0.05    # 2%
 }
 
-def ensure_db():
-    if not os.path.exists(DB_PATH):
-        init_db()
-        seed_menu_items()
-        seed_tables()
-
-ensure_db()
-
 def allowed_file(filename):
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
 
