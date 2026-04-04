@@ -34,11 +34,8 @@ app = Flask(__name__)
 
 from flask_cors import CORS
 
-CORS(
-    app,
-    resources={r"/*": {"origins": ["http://localhost:5173", "https://eatrova2.vercel.app"]}},
-    supports_credentials=True
-)
+CORS(app, supports_credentials=True)
+
 # Use eventlet for websocket support (ensure eventlet is installed)
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode="eventlet")
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
