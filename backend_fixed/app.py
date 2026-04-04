@@ -3869,19 +3869,22 @@ def analytics_purchase_history():
 # Start server
 # ---------------------------
 if __name__ == "__main__":
-    # ensure DB exists and seeded
-    os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
-    init_db()
-    seed_menu_items()
-    seed_tables()
+    socketio.run(app, host="0.0.0.0", port=5000)
+    
+# if __name__ == "__main__":
+#     # ensure DB exists and seeded
+#     os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
+#     init_db()
+#     seed_menu_items()
+#     seed_tables()
 
-    # get port from environment (Render sets this automatically)
-    import os
-    port = int(os.environ.get("PORT", 5000))
+#     # get port from environment (Render sets this automatically)
+#     import os
+#     port = int(os.environ.get("PORT", 5000))
 
-    # run SocketIO server with correct host and CORS
-    socketio = SocketIO(app, cors_allowed_origins=[
-        "http://localhost:5173",             # local dev
-        "https://eatrova2.vercel.app"       # deployed frontend
-    ])
-    socketio.run(app, host="0.0.0.0", port=port, debug=True)
+#     # run SocketIO server with correct host and CORS
+#     socketio = SocketIO(app, cors_allowed_origins=[
+#         "http://localhost:5173",             # local dev
+#         "https://eatrova2.vercel.app"       # deployed frontend
+#     ])
+#     socketio.run(app, host="0.0.0.0", port=port, debug=True)
