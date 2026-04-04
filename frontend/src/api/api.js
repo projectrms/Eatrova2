@@ -3,43 +3,24 @@ import axios from "axios";
 
 // Base URL for Flask backend
 // src/api/api.js
-export const API_BASE = "https://eatrova2.onrender.com"; // your backend
+const API = "https://eatrova2.onrender.com";
 
-// ----------------------
-// Axios-based API helpers
-// ----------------------
-
-// Generic GET
+// GET
 export const apiGet = async (endpoint) => {
-  try {
-    const response = await axios.get(`${API_BASE}${endpoint}`);
-    return response.data;
-  } catch (err) {
-    console.error("apiGet error:", err.response?.data || err.message);
-    throw err;
-  }
+  const response = await axios.get(`${API}${endpoint}`);
+  return response.data;
 };
 
-// Generic POST
+// POST
 export const apiPost = async (endpoint, data) => {
-  try {
-    const response = await axios.post(`${API_BASE}${endpoint}`, data);
-    return response.data;
-  } catch (err) {
-    console.error("apiPost error:", err.response?.data || err.message);
-    throw err;
-  }
+  const response = await axios.post(`${API}${endpoint}`, data);
+  return response.data;
 };
 
-// Generic DELETE
+// DELETE
 export const apiDelete = async (endpoint) => {
-  try {
-    const response = await axios.delete(`${API_BASE}${endpoint}`);
-    return response.data;
-  } catch (err) {
-    console.error("apiDelete error:", err.response?.data || err.message);
-    throw err;
-  }
+  const response = await axios.delete(`${API}${endpoint}`);
+  return response.data;
 };
 
 // ----------------------
@@ -48,24 +29,18 @@ export const apiDelete = async (endpoint) => {
 
 // Generic JSON fetch with error handling
 export async function fetchJSON(path, options = {}) {
-  try {
-    const res = await fetch(`${API_BASE}${path}`, {
-      headers: { "Content-Type": "application/json" },
-      ...options,
-    });
+  const res = await fetch(`${API}${path}`, {
+    headers: { "Content-Type": "application/json" },
+    ...options,
+  });
 
-    const data = await res.json().catch(() => null); // prevent crash on invalid JSON
+  const data = await res.json().catch(() => null);
 
-    if (!res.ok) {
-      const errorMessage = data?.error || res.statusText || "Unknown error";
-      throw new Error(`HTTP ${res.status}: ${errorMessage}`);
-    }
-
-    return data;
-  } catch (err) {
-    console.error("fetchJSON error:", err);
-    throw err;
+  if (!res.ok) {
+    throw new Error(`HTTP ${res.status}: ${data?.error}`);
   }
+
+  return data;
 }
 
 // Register user
