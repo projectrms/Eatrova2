@@ -65,7 +65,11 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row
     return conn
 
-
+def ensure_db():
+    if not os.path.exists(DB_PATH):
+        print("Creating database...")
+    init_db()
+    
 def init_db():
     """
     Create required tables if missing.

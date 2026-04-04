@@ -5,6 +5,8 @@ import axios from "axios";
 // src/api/api.js
 const API = "https://eatrova2.onrender.com";
 
+fetch(`${API}/login`) 
+
 // GET
 export const apiGet = async (endpoint) => {
   const response = await axios.get(`${API}${endpoint}`);
