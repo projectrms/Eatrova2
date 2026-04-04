@@ -32,6 +32,8 @@ DB_PATH = os.path.join(os.getcwd(), "restaurant.db")
 
 app = Flask(__name__)
 
+from flask_cors import CORS
+
 CORS(
     app,
     resources={r"/*": {"origins": ["http://localhost:5173", "https://eatrova2.vercel.app"]}},
@@ -3864,5 +3866,14 @@ if __name__ == "__main__":
     init_db()
     seed_menu_items()
     seed_tables()
-    # run SocketIO server
-    socketio.run(app, host="127.0.0.1", port=5000, debug=True)
+
+    # get port from environment (Render sets this automatically)
+    import os
+    port = int(os.environ.get("PORT", 5000))
+
+    # run SocketIO server with correct host and CORS
+    socketio = SocketIO(app, cors_allowed_origins=[
+        "http://localhost:5173",             # local dev
+        "https://eatrova2.vercel.app"       # deployed frontend
+    ])
+    socketio.run(app, host="0.0.0.0", port=port, debug=True)
