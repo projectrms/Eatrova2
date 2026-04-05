@@ -1,2 +1,2 @@
 // src/api/constants.js
-export const API = import.meta.env.VITE_SOCKET_URL;
+export const API = import.meta.env.VITE_API_BASE_URL;
