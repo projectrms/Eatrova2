@@ -44,7 +44,7 @@ import axios from "axios";
  */
 
 // NOTE: socket URL kept as local; if you deploy, change to env variable.
-const SOCKET_URL = "http://127.0.0.1:5000";
+const API = import.meta.env.VITE_SOCKET_URL; // automatically picks local or deployed URL
 
 export default function OwnerDashboard() {
   const { orders: ctxOrders, menuItems: ctxMenu } = useRestaurant();
@@ -116,7 +116,7 @@ const fetchRevenue = async (selectedRange = "week") => {
   setRange(selectedRange);
   try {
     const res = await fetch(
-      `http://127.0.0.1:5000/owner/analytics/revenue?range=${selectedRange}`
+      `${API}/owner/analytics/revenue?range=${selectedRange}`
     );
     const data = await res.json();
 
@@ -204,11 +204,11 @@ function detectDelayedOrders(orderList) {
 
   const loadCustomerAnalytics = async () => {
       try {
-        const f = await fetch("http://127.0.0.1:5000/analytics/customer/frequent");
-        const h = await fetch("http://127.0.0.1:5000/analytics/customer/highest");
-        const t = await fetch("http://127.0.0.1:5000/analytics/customer/today");
-        const u = await fetch("http://127.0.0.1:5000/analytics/customer/unpaid");
-        const ph = await fetch("http://127.0.0.1:5000/analytics/customer/history");
+        const f = await fetch(`${API}/analytics/customer/frequent`);
+        const h = await fetch(`${API}/analytics/customer/highest`);
+        const t = await fetch(`${API}/analytics/customer/today`);
+        const u = await fetch(`${API}/analytics/customer/unpaid`);
+        const ph = await fetch(`${API}/analytics/customer/history`);
 
         const frequent = await f.json();
         const highest = await h.json();
