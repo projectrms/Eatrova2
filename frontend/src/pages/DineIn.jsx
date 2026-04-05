@@ -1,6 +1,6 @@
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-
+import { API } from "../api/constants";
 export default function DineIn() {
   const [params] = useSearchParams();
   const navigate = useNavigate();

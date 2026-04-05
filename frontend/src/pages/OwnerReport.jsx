@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../styles/OwnerReport.css";
-
+import { API } from "../api/constants";
 export default function OwnerReport() {
   const [summary, setSummary] = useState({});
   const [daily, setDaily] = useState([]);
@@ -11,11 +11,11 @@ export default function OwnerReport() {
 
   useEffect(() => {
     Promise.all([
-      fetch("http://127.0.0.1:5000/owner/report/summary").then(res => res.json()),
-      fetch("http://127.0.0.1:5000/owner/report/daily").then(res => res.json()),
-      fetch("http://127.0.0.1:5000/owner/report/monthly").then(res => res.json()),
-      fetch("http://127.0.0.1:5000/owner/report/customers").then(res => res.json()),
-      fetch("http://127.0.0.1:5000/owner/report/orders")
+      fetch(`${API}/owner/report/summary`).then(res => res.json()),
+      fetch(`${API}/owner/report/daily`).then(res => res.json()),
+      fetch(`${API}/owner/report/monthly`).then(res => res.json()),
+      fetch(`${API}/owner/report/customers`).then(res => res.json()),
+      fetch(`${API}/owner/report/orders`)
   .then(res => res.json())
   .then(data => {
     if (Array.isArray(data)) {

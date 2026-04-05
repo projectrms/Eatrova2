@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "../styles/TodayReport.css";
-
+import { API } from "../api/constants";
 export default function TodayReport() {
 
   const [orders,setOrders] = useState([]);
 
   useEffect(()=>{
 
-    fetch("http://127.0.0.1:5000/owner/today-report")
+    fetch(`${API}/owner/today-report`)
       .then(res=>res.json())
       .then(setOrders)
 

@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import "./CartPage.css";
-
+import { API } from "../api/constants";
 export default function CartPage() {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/api/cart")
+    fetch(`${API}/api/cart`)
       .then((res) => res.json())
       .then(setCart)
       .catch((err) => console.error(err));
   }, []);
 
   const removeItem = (id) => {
-    fetch(`http://127.0.0.1:5000/api/cart/${id}`, { method: "DELETE" })
+    fetch(`${API}/api/cart/${id}`, { method: "DELETE" })
       .then(() => setCart((prev) => prev.filter((i) => i.id !== id)));
   };
 
   const placeOrder = async () => {
-    await fetch("http://127.0.0.1:5000/api/order", {
+    await fetch(`${API}/api/order`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ items: cart }),

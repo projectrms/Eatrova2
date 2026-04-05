@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import socket from "../socket/socket";
 import "../styles/Navbar.css";
+import { API } from "../api/constants";
 import {
   Home,
   Utensils,
@@ -80,7 +81,7 @@ export default function Navbar() {
 
     try {
       const res = await fetch(
-        `http://127.0.0.1:5000/orders/unpaid/${tableNo}`
+        `${API}/orders/unpaid/${tableNo}`
       );
 
       if (!res.ok) throw new Error("Failed to fetch unpaid");

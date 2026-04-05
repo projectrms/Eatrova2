@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import "../styles/Inventory.css";
 import Modal from "../components/Modal";
-
+import { API } from "../api/constants";
 export default function Inventory() {
   const [items, setItems] = useState([]);
   const [alerts, setAlerts] = useState({ low: [], out: [] });
@@ -47,7 +47,7 @@ export default function Inventory() {
 
   /* ================= FETCH INVENTORY ================= */
   const fetchInventory = async () => {
-    const res = await fetch("http://127.0.0.1:5000/inventory");
+    const res = await fetch(`${API}/inventory`);
     const data = await res.json();
     setItems(data.items);
     setAlerts(data.alerts);
@@ -59,7 +59,7 @@ export default function Inventory() {
 
   /* ================= UPDATE STOCK ================= */
   const updateStock = async (id, change) => {
-    await fetch(`http://127.0.0.1:5000/inventory/${id}/stock`, {
+    await fetch(`${API}/inventory/${id}/stock`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ change })
@@ -250,7 +250,7 @@ export default function Inventory() {
               <button
                 className="primary-btn"
                 onClick={async () => {
-                  await fetch("http://127.0.0.1:5000/inventory", {
+                  await fetch(`${API}/inventory`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
@@ -331,7 +331,7 @@ export default function Inventory() {
                 className="primary-btn"
                 onClick={async () => {
                   await fetch(
-                    `http://127.0.0.1:5000/inventory/${selectedItem.id}`,
+                    `${API}/inventory/${selectedItem.id}`,
                     {
                       method: "PUT",
                       headers: { "Content-Type": "application/json" },
@@ -397,7 +397,7 @@ export default function Inventory() {
                 className="danger-btn"
                 onClick={async () => {
                   await fetch(
-                    `http://127.0.0.1:5000/inventory/${selectedItem.id}`,
+                    `${API}/inventory/${selectedItem.id}`,
                     { method: "DELETE" }
                   );
                   setShowDeleteModal(false);

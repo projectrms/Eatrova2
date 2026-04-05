@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { io } from "socket.io-client";
-
+import { API } from "../api/constants";
 /**
  * RestaurantContext - full-featured restaurant app context
  *
@@ -23,7 +23,13 @@ import { io } from "socket.io-client";
 
 const RestaurantContext = createContext(null);
 
-export function RestaurantProvider({ children, apiBase = "http://127.0.0.1:5000", socketUrl = null }) {
+export function RestaurantProvider({ children, apiBase = null, socketUrl = null }) {
+  // --------------------------
+  // Use env vars or fallback
+  // --------------------------
+  const API_BASE = apiBase || import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:5000";
+  const SOCKET_URL = socketUrl || import.meta.env.VITE_SOCKET_URL || "http://127.0.0.1:5000";
+  
   // core live sets
   const [ctxOrders, setCtxOrders] = useState([]);
   const [ctxMenu, setCtxMenu] = useState([]);

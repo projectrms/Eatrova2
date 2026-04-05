@@ -35,7 +35,7 @@ export default function useChefOrders({ pollInterval = 5000 } = {}) {
 
   const fetchOrders = async () => {
     try {
-      const res = await fetch("http://127.0.0.1:5000/chef/orders");
+      const res = await fetch(`${API}/chef/orders`);
       const data = await res.json();
       setOrders(Array.isArray(data) ? data.map(normalize) : []);
       setLoading(false);
@@ -82,7 +82,7 @@ export default function useChefOrders({ pollInterval = 5000 } = {}) {
   const updateOrderStatusLocal = async (orderId, newStatus) => {
     setOrders((prev) => prev.map((o) => (o.order_id === orderId ? { ...o, status: newStatus } : o)));
     try {
-      await fetch(`http://127.0.0.1:5000/orders/${orderId}/status`, {
+      await fetch(`${API}/orders/${orderId}/status`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: newStatus }),

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import Swal from "sweetalert2";
 import "../styles/AuthPages.css";
-
+import { API } from "../api/constants";
 export default function RegisterPage() {
 
   const navigate = useNavigate();
@@ -46,7 +46,7 @@ export default function RegisterPage() {
     }
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/register", {
+      const response = await fetch(`${API}/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

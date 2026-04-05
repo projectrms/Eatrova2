@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import socket from "../socket/socket";
 import Navbar from "../components/Navbar";
 import "../styles/OrderTracking.css";
-
+import { API } from "../api/constants";
 export default function OrderTracking() {
   const { orderId } = useParams();
 
@@ -15,7 +15,7 @@ export default function OrderTracking() {
   // FETCH ORDER DETAILS
   // -------------------------------
   useEffect(() => {
-    fetch(`http://127.0.0.1:5000/orders/${orderId}`)
+    fetch(`${API}/orders/${orderId}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

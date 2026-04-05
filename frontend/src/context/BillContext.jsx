@@ -1,7 +1,7 @@
 // src/context/BillContext.jsx
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useAuth } from "./AuthContext";
-
+import { API } from "../api/constants";
 const BillContext = createContext();
 
 export function BillProvider({ children }) {
@@ -16,7 +16,7 @@ export function BillProvider({ children }) {
     }
 
     try {
-      const res = await fetch(`http://127.0.0.1:5000/orders/${user.id}`);
+      const res = await fetch(`${API}/orders/${user.id}`);
       const data = await res.json();
 
       if (Array.isArray(data)) {

@@ -7,7 +7,7 @@ import socket from "../socket/socket";
 import "../styles/ChefDashboard.css";
 import Modal from "../components/Modal";
 import ScrollToTopButton from "../components/ScrollToTopButton";
-
+import { API } from "../api/constants";
 export default function ChefDashboard() {
   const { user, isLoggedIn } = useAuth();
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ export default function ChefDashboard() {
 
   const fetchOrders = async () => {
     try {
-      const res = await fetch("http://127.0.0.1:5000/chef/orders");
+      const res = await fetch(`${API}/chef/orders`);
       const data = await res.json();
       setOrders(data.map(normalize));
       setLoading(false);
@@ -52,7 +52,7 @@ export default function ChefDashboard() {
     );
 
     try {
-      await fetch(`http://127.0.0.1:5000/orders/${orderId}/status`, {
+      await fetch(`${API}/orders/${orderId}/status`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: newStatus }),
@@ -72,7 +72,7 @@ export default function ChefDashboard() {
 
     try {
       const res = await fetch(
-        `http://127.0.0.1:5000/orders/${selectedOrder.order_id}/cancel`,
+        `${API}/orders/${selectedOrder.order_id}/cancel`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { loadStripe } from "@stripe/stripe-js";
 import ScrollToTopButton from "../components/ScrollToTopButton";
-
+import { API } from "../api/constants";
 export default function BillPage() {
   const stripePromise = loadStripe("pk_test_51TA2YtLnPGzSFoPHffAIz6ARMLJIRVkFKYUqQZx6RF3onF82UjWIGTZ5H6Tf4tKi6K3CxeRd2KZM8RfV0oj04Xy400Gh9U4Umy");
   const tableNo = Number(localStorage.getItem("table_session"));
@@ -38,7 +38,7 @@ export default function BillPage() {
 
     setLoading(true);
 
-    fetch(`http://127.0.0.1:5000/bills/session/${tableNo}`)
+    fetch(`${API}/bills/session/${tableNo}`)
       .then(res => {
         if (!res.ok) throw new Error("Bill fetch failed");
         return res.json();
@@ -57,7 +57,7 @@ export default function BillPage() {
 
     try {
       const res = await fetch(
-        `http://127.0.0.1:5000/bills/history/user/${user.id}`
+        `${API}/bills/history/user/${user.id}`
       );
 
       if (!res.ok) throw new Error("History fetch failed");
@@ -82,7 +82,7 @@ export default function BillPage() {
   const openInvoice = async (sessionId) => {
     try {
       const res = await fetch(
-        `http://127.0.0.1:5000/bills/invoice/${sessionId}`
+        `${API}/bills/invoice/${sessionId}`
       );
 
       if (!res.ok) throw new Error("Invoice fetch failed");
@@ -108,7 +108,7 @@ export default function BillPage() {
       if (method === "Cash") {
 
         const res = await fetch(
-          `http://127.0.0.1:5000/pay/session/${tableNo}`,
+          `${API}/pay/session/${tableNo}`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },

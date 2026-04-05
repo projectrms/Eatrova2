@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { socket } from "../socket/socket"; // your socket file
 import "../styles/ActivityFeed.css";
-
+import { API } from "../api/constants";
 export default function ActivityFeed() {
   const [logs, setLogs] = useState([]);
   const bottomRef = useRef(null);
@@ -15,7 +15,7 @@ export default function ActivityFeed() {
 
   // Load old logs from API
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/logs")
+    fetch(`${API}/logs`)
       .then(res => res.json())
       .then(data => setLogs(data));
   }, []);

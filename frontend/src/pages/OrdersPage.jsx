@@ -5,7 +5,7 @@ import socket from "../socket/socket";
 import Navbar from "../components/Navbar";
 import "../styles/OrdersPage.css";
 import ScrollToTopButton from "../components/ScrollToTopButton";
-
+import { API } from "../api/constants";
 const OrdersPage = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ const OrdersPage = () => {
 
     try {
       const res = await fetch(
-        `http://127.0.0.1:5000/orders/user/${user.id}`
+        `${API}/orders/user/${user.id}`
       );
 
       if (!res.ok) throw new Error("Fetch failed");

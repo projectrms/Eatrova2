@@ -7,7 +7,7 @@ import Navbar from "../components/Navbar";
 import "../styles/CartPage.css";
 import { motion } from "framer-motion";
 import ScrollToTopButton from "../components/ScrollToTopButton";
-
+import { API } from "../api/constants";
 export default function CartPage() {
   const { cart, increaseQty, decreaseQty, removeItem, clearCart } = useCart();
   const { user, isLoggedIn } = useAuth();
@@ -31,7 +31,7 @@ export default function CartPage() {
 
     const fetchSummary = async () => {
       try {
-        const res = await fetch("http://127.0.0.1:5000/order/summary", {
+        const res = await fetch(`${API}/order/summary`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -56,7 +56,7 @@ export default function CartPage() {
     if (!cart.length) return;
 
     try {
-      const res = await fetch("http://127.0.0.1:5000/orders", {
+      const res = await fetch(`${API}/orders`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -121,7 +121,7 @@ export default function CartPage() {
                   item.image?.startsWith("http")
                     ? item.image
                     : item.image
-                    ? `http://127.0.0.1:5000${item.image}`
+                    ? `${API}${item.image}`
                     : "/no-image.png";
 
                 return (

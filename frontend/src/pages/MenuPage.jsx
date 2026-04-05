@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import ScrollToTopButton from "../components/ScrollToTopButton";
+import { API } from "../api/constants";
 import { 
   Search,
   X,
@@ -55,7 +56,7 @@ export default function MenuPage() {
 useEffect(() => {
   const fetchMenu = async () => {
     try {
-      const res = await fetch("http://127.0.0.1:5000/menu");
+      const res = await fetch(`${API}/menu`);
 
       if (!res.ok) throw new Error("Failed to fetch menu");
 
@@ -156,7 +157,7 @@ if (loading) return <div className="menu-loading">🍕 Loading menu...</div>;
     selectedItem?.image?.startsWith("http")
       ? selectedItem.image
       : selectedItem?.image
-      ? `http://127.0.0.1:5000${selectedItem.image}`
+      ? `${API}${selectedItem.image}`
       : "/no-image.png";
 
   return (
@@ -248,7 +249,7 @@ if (loading) return <div className="menu-loading">🍕 Loading menu...</div>;
               item.image?.startsWith("http")
                 ? item.image
                 : item.image
-                ? `http://127.0.0.1:5000${item.image}`
+                ? `${API}${item.image}`
                 : "/no-image.png";
 
             const shortDesc =

@@ -2,7 +2,7 @@ import React from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import "../styles/OwnerNavbar.css";
-
+import { API } from "../api/constants";
 export default function OwnerNavbar({
   restaurantOpen,
   toggleRestaurant,
@@ -19,7 +19,7 @@ export default function OwnerNavbar({
 
   const exportExcel = () => {
     const link = document.createElement("a");
-    link.href = "http://127.0.0.1:5000/owner/report/export";
+    link.href = `${API}/owner/report/export`;
     link.setAttribute("download", "restaurant_reports.xlsx");
     document.body.appendChild(link);
     link.click();
@@ -27,7 +27,7 @@ export default function OwnerNavbar({
   };
 
   const exportPDF = () => {
-  window.open("http://127.0.0.1:5000/owner/export/pdf");
+  window.open(`${API}/owner/export/pdf`);
 };
 
   return (
