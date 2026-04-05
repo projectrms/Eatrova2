@@ -72,7 +72,7 @@ def ensure_db():
     
 def init_db():
     """
-    Create required tables if missing.
+    Create required tables if missing. 
     """
     conn = get_db_connection()
     cur = conn.cursor()
@@ -84,7 +84,7 @@ def init_db():
             name TEXT NOT NULL,
             email TEXT UNIQUE NOT NULL,
             phone TEXT UNIQUE NOT NULL,
-            password TEXT NOT NULL
+            password TEXT NOT NULL 
         )
     """)
 
