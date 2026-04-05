@@ -2,10 +2,9 @@
 import axios from "axios";
 
 // Base URL for Flask backend
-// src/api/api.js
-const API = "https://eatrova2.onrender.com";
+const API = import.meta.env.VITE_SOCKET_URL; // <- must be this
 
-fetch(`${API}/login`) 
+fetch(`${API}/login`) // example
 
 // GET
 export const apiGet = async (endpoint) => {
