@@ -519,11 +519,11 @@ function detectDelayedOrders(orderList) {
         tableRes,
         allOrdersRes
       ] = await Promise.allSettled([
-        safeFetchJson(`${API}/owner/sales?range=daily`),
-        safeFetchJson(`${API}/owner/inventory`),
-        safeFetchJson(`${API}/owner/staff/performance`),
-        safeFetchJson(`${API}/owner/table-status`),
-        safeFetchJson(`${API}/owner/orders/all`)
+        safeFetchJson(```${import.meta.env.VITE_SOCKET_URL}/owner/sales?range=daily`),
+        safeFetchJson(`${import.meta.env.VITE_SOCKET_URL}/owner/inventory`),
+        safeFetchJson(`${import.meta.env.VITE_SOCKET_URL}/owner/staff/performance`),
+        safeFetchJson(`${import.meta.env.VITE_SOCKET_URL}/owner/table-status`),
+        safeFetchJson(`${import.meta.env.VITE_SOCKET_URL}/owner/orders/all`)
       ]);
 
       if (salesRes.status === "fulfilled")

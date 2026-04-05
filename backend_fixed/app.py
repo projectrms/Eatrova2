@@ -3869,8 +3869,8 @@ def analytics_purchase_history():
 # Start server
 # --------------------------
 if __name__ == "__main__":
-    app.run()
-
+    port = int(os.environ.get("PORT", 5000))
+    socketio.run(app, host="0.0.0.0", port=port)
 # if __name__ == "__main__":
 #     # ensure DB exists and seeded
 #     os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
